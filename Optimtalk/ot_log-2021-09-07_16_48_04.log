@@ -1,0 +1,134 @@
+Created from template: |append [ot_log-%y-%m-%d_%H_%M_%s.log] 
+Number of records: 100000
+Lifetime: unlimited
+Log format:
+date time severity {session id} <category> [source]
+label: message
+===================================================
+
+2021-Sep-07 16:48:04.097 ALW {N/A} <N/A> [OptimComponents Core]
+========== Log start ==========
+
+2021-Sep-07 16:48:04.097 INFO {N/A} <N/A> [OptimComponents Core]
+Created session with ID 'vxmlDialog_0'.
+
+2021-Sep-07 16:48:04.820 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Preparing document 'file:/C:/Optimtalk/example05/example05_1.vxml'.
+
+2021-Sep-07 16:48:04.850 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Preparing of document 'file:/C:/Optimtalk/example05/example05_1.vxml' completed.
+  result = success
+
+2021-Sep-07 16:48:04.860 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting document 'file:/C:/Optimtalk/example05/example05_1.vxml'
+
+2021-Sep-07 16:48:04.860 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <form> with id 'start'; line 10; column 1.
+
+2021-Sep-07 16:48:04.860 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <block>; line 11; column 3.
+
+2021-Sep-07 16:48:04.870 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <field> with name 'answer'; line 16; column 3.
+
+2021-Sep-07 16:48:04.900 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Waiting for user's input.
+
+2021-Sep-07 16:48:08.190 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+User's input collection completed.
+
+2021-Sep-07 16:48:08.190 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+The following input was collected:
+  utterance = yes
+  confidence = 1
+  mode = voice
+
+2021-Sep-07 16:48:08.190 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <filled>; line 21; column 5.
+
+2021-Sep-07 16:48:08.200 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <block>; line 30; column 3.
+
+2021-Sep-07 16:48:08.200 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Preparing document 'file:/C:/Optimtalk/example05/example05_2.vxml'.
+
+2021-Sep-07 16:48:08.220 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Preparing of document 'file:/C:/Optimtalk/example05/example05_2.vxml' completed.
+  result = success
+
+2021-Sep-07 16:48:08.220 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting document 'file:/C:/Optimtalk/example05/example05_2.vxml'
+
+2021-Sep-07 16:48:08.220 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <form> with id 'start'; line 10; column 1.
+
+2021-Sep-07 16:48:08.220 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <block>; line 11; column 3.
+
+2021-Sep-07 16:48:08.230 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <field> with name 'answer'; line 15; column 3.
+
+2021-Sep-07 16:48:08.240 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Waiting for user's input.
+
+2021-Sep-07 16:48:10.690 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+User's input collection completed.
+
+2021-Sep-07 16:48:10.690 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+The following input was collected:
+  utterance = no
+  confidence = 1
+  mode = voice
+
+2021-Sep-07 16:48:10.690 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <filled>; line 20; column 5.
+
+2021-Sep-07 16:48:10.700 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <block>; line 29; column 3.
+
+2021-Sep-07 16:48:10.700 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Preparing document 'file:/C:/Optimtalk/example05/example05_3.vxml'.
+
+2021-Sep-07 16:48:10.750 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Preparing of document 'file:/C:/Optimtalk/example05/example05_3.vxml' completed.
+  result = success
+
+2021-Sep-07 16:48:10.760 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting document 'file:/C:/Optimtalk/example05/example05_3.vxml'
+
+2021-Sep-07 16:48:10.770 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <form> with id 'start'; line 10; column 1.
+
+2021-Sep-07 16:48:10.770 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <block>; line 11; column 3.
+
+2021-Sep-07 16:48:10.770 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <field> with name 'answer'; line 15; column 3.
+
+2021-Sep-07 16:48:10.780 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Waiting for user's input.
+
+2021-Sep-07 16:48:13.390 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+User's input collection completed.
+
+2021-Sep-07 16:48:13.390 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+The following input was collected:
+  utterance = no
+  confidence = 1
+  mode = voice
+
+2021-Sep-07 16:48:13.390 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <filled>; line 20; column 5.
+
+2021-Sep-07 16:48:13.400 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <block>; line 29; column 3.
+
+2021-Sep-07 16:48:13.410 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpretation finished.
+  value returned by <exit> = undefined
+  value returned by <disconnect> = 
+undefined
+
+2021-Sep-07 16:48:13.676 INFO {N/A} <N/A> [OptimComponents Core]
+Deleted session with ID 'vxmlDialog_0'.
+

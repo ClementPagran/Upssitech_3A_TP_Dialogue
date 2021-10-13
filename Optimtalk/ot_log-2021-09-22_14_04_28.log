@@ -1,0 +1,17 @@
+Created from template: |append [ot_log-%y-%m-%d_%H_%M_%s.log] 
+Number of records: 100000
+Lifetime: unlimited
+Log format:
+date time severity {session id} <category> [source]
+label: message
+===================================================
+
+2021-Sep-22 14:04:28.861 ALW {N/A} <N/A> [OptimComponents Core]
+========== Log start ==========
+
+2021-Sep-22 14:04:28.861 INFO {N/A} <N/A> [OptimComponents Core]
+Created session with ID 'vxmlDialog_0'.
+
+2021-Sep-22 14:04:28.881 INFO {N/A} <N/A> [OptimComponents Core]
+Deleted session with ID 'vxmlDialog_0'.
+

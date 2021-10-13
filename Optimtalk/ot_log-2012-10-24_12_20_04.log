@@ -1,0 +1,101 @@
+Created from template: |append [ot_log-%y-%m-%d_%H_%M_%s.log] 
+Number of records: 100000
+Lifetime: unlimited
+Log format:
+date time severity {session id} <category> [source]
+label: message
+===================================================
+
+2012-Oct-24 12:20:04.028 ALW {N/A} <N/A> [OptimComponents Core]
+========== Log start ==========
+
+2012-Oct-24 12:20:04.028 INFO {N/A} <N/A> [OptimComponents Core]
+Created session with ID 'vxmlDialog_0'.
+
+2012-Oct-24 12:20:04.184 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Preparing document 'file:/G:/GestionAIP/LogicielOleron/Optimtalk/InstallOptimtalk/example05/example05_1.vxml'.
+
+2012-Oct-24 12:20:04.199 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Preparing of document 'file:/G:/GestionAIP/LogicielOleron/Optimtalk/InstallOptimtalk/example05/example05_1.vxml' completed.
+  result = success
+
+2012-Oct-24 12:20:04.199 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting document 'file:/G:/GestionAIP/LogicielOleron/Optimtalk/InstallOptimtalk/example05/example05_1.vxml'
+
+2012-Oct-24 12:20:04.199 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <form> with id 'start'; line 10; column 1.
+
+2012-Oct-24 12:20:04.199 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <block>; line 11; column 3.
+
+2012-Oct-24 12:20:04.199 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <field> with name 'answer'; line 16; column 3.
+
+2012-Oct-24 12:20:04.215 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Waiting for user's input.
+
+2012-Oct-24 12:20:08.043 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+User's input collection completed.
+
+2012-Oct-24 12:20:08.043 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+The following input was collected:
+  utterance = yes
+  confidence = 1
+  mode = voice
+
+2012-Oct-24 12:20:08.043 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <filled>; line 21; column 5.
+
+2012-Oct-24 12:20:08.043 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <block>; line 30; column 3.
+
+2012-Oct-24 12:20:08.043 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Preparing document 'file:/G:/GestionAIP/LogicielOleron/Optimtalk/InstallOptimtalk/example05/example05_2.vxml'.
+
+2012-Oct-24 12:20:08.043 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Preparing of document 'file:/G:/GestionAIP/LogicielOleron/Optimtalk/InstallOptimtalk/example05/example05_2.vxml' completed.
+  result = success
+
+2012-Oct-24 12:20:08.043 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting document 'file:/G:/GestionAIP/LogicielOleron/Optimtalk/InstallOptimtalk/example05/example05_2.vxml'
+
+2012-Oct-24 12:20:08.043 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <form> with id 'start'; line 10; column 1.
+
+2012-Oct-24 12:20:08.043 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <block>; line 11; column 3.
+
+2012-Oct-24 12:20:08.043 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpreting <field> with name 'answer'; line 15; column 3.
+
+2012-Oct-24 12:20:08.059 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Waiting for user's input.
+
+2012-Oct-24 12:20:11.653 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+User's input collection completed.
+
+2012-Oct-24 12:20:11.653 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+The following input was collected:
+  utterance = exit
+  confidence = 1
+  mode = voice
+
+2012-Oct-24 12:20:11.684 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+An event 'exit' was added to the event queue
+
+2012-Oct-24 12:20:11.684 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Processing event 'exit'.
+  Event origin = document 'file:/G:/GestionAIP/LogicielOleron/Optimtalk/InstallOptimtalk/example05/example05_2.vxml'
+  Handler location = document 'file:/G:/GestionAIP/LogicielOleron/Optimtalk/InstallOptimtalk/example05/example05_root1.vxml'; line 14, column 1
+
+2012-Oct-24 12:20:11.684 INFO {vxmlDialog_0} <Interpretation tracking> [VoiceXML interpreter]
+Interpretation finished.
+  value returned by <exit> = 
+{
+}
+  value returned by <disconnect> = 
+undefined
+
+2012-Oct-24 12:20:11.762 INFO {N/A} <N/A> [OptimComponents Core]
+Deleted session with ID 'vxmlDialog_0'.
+

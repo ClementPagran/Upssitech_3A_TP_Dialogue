@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- fichier grammaire_horaire.grxml -->
+
+<grammar version="1.0" root="Horaire" xml:lang="fr" >
+
+<meta name="description" content="grammaire des horaires"/>
+<meta name="author" content="Clément Petit"/>
+<meta name="copyright" content="free for any purpose"/>
+
+<!-- grammaire regle syntagmatique Horaire -> [Num_Heure +] Heure [+ Num_Min] [+ Av] -->
+<!-- cette grammaire extrait le texte correspondant a un horaire enoncee .text -->
+<!-- ainsi que les valeurs necessaires a la generation d'un horaire -->
+<rule id="Horaire" scope="public">
+
+	<item repeat="0-1"> <ruleref uri="#filler_debut_phrase" /> </item>
+	<item> <ruleref uri="#num_heures" /> <tag> out.heure = rules.num_heures.nb_heure; out.min = 60*rules.num_heures.nb_heure; out.text = meta.num_heures.text; </tag> </item>
+	<item repeat="0-1"> <ruleref uri="#num_min" />
+		<tag>
+				if(rules.num_min.flag_heure){
+					out.min = 60 - rules.num_min.nb_min;
+					out.nb_min= 60*(rules.num_heures.nb_heure-1) + (60-rules.num_min.nb_min);
+				}
+				else {
+					out.min = rules.num_min.nb_min;
+					out.nb_min= 60*rules.num_heures.nb_heure + rules.num_min.nb_min;
+				}
+				if (rules.num_heures.nb_heure - rules.num_min.flag_heure == -1){
+					out.heure = 23;
+					out.nb_min= 60*23 + (60-rules.num_min.nb_min);
+				}
+				else
+					out.heure = rules.num_heures.nb_heure - rules.num_min.flag_heure;
+				out.text = out.text +" "+ meta.num_min.text
+
+		</tag>
+	</item>
+</rule>
+
+<!-- Numero des heures -->
+<rule id="num_heures" scope="public">
+        <one-of>
+	               <item> une heure <tag> out.nb_heure = 1; </tag> </item>
+	               <item>
+                             <ruleref uri="grammaire_nombre_v3.grxml#nombre" /> heures
+                             <tag> out.nb_heure = rules.nombre.nb; </tag>
+                </item>
+				   <item> <ruleref uri="#nom_heure" /> <tag> out.nb_heure = rules.latest().nb_heure; </tag> </item>
+        </one-of>
+				<tag> out.text = meta.current().text ; </tag>
+</rule>
+
+<!-- Numero des minutes -->
+<rule id="num_min" scope="public">
+          <one-of>
+	        	<item> une <tag> out.nb_min = 1; out.text = "une "; </tag> </item>
+	          <item>
+                           <ruleref uri="grammaire_nombre_v3.grxml#nombre" />
+                           <tag> out.nb_min = rules.nombre.nb; out.text = out.text + meta.nombre.text; out.flag_heure = 0; ; </tag>
+          	</item>
+				   <item> <ruleref uri="#val_spe_apres" /> <tag> out.nb_min = rules.latest().nb_min; out.flag_heure = 0; </tag> </item>
+				   <item> moins le quart <tag> out.flag_heure = 1; out.nb_min = 45; </tag> </item>
+					 <item> moins <ruleref uri="grammaire_nombre_v3.grxml#nombre" /> <tag> out.flag_heure = 1; out.nb_min = rules.nombre.nb; </tag> </item>
+          </one-of>
+</rule>
+
+<!-- Heure Nommé -->
+<rule id="nom_heure" scope="public">
+		<one-of>
+			<item> midi <tag> out.nb_heure = 12 ;  </tag> </item>
+			<item> minuit <tag> out.nb_heure = 0 ;  </tag> </item>
+		</one-of>
+		<tag> out.text = meta.current().text ; </tag>
+</rule>
+
+<rule id="val_spe_apres" scope="public">
+		<one-of>
+			<item> et-quart <tag> out.nb_min = 15; </tag> </item>
+			<item> et-demi <tag> out.nb_min = 30; </tag> </item>
+		</one-of>
+</rule>
+
+<rule id="filler_debut_phrase">
+      <one-of>
+              <item> il est </item>
+              <item> c'est </item>
+      </one-of>
+</rule>
+
+</grammar>
