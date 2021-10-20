@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- fichier grammaire_duree.grxml -->
+
+<grammar version="1.0" root="Duree" xml:lang="fr" >
+
+<meta name="description" content="grammaire des duree"/>
+<meta name="author" content="Clément Petit"/>
+<meta name="copyright" content="free for any purpose"/>
+
+<!-- grammaire regle syntagmatique Horaire -> [Num_Heure +] Heure [+ Num_Min] [+ Av] -->
+<!-- cette grammaire extrait le texte correspondant a un horaire enoncee .text -->
+<!-- ainsi que les valeurs necessaires a la generation d'un horaire -->
+<rule id="Duree" scope="public">
+
+	<item repeat="0-1"> <ruleref uri="#filler_debut_phrase" /> </item>
+	<one-of>
+		<item> <ruleref uri="#num_heures" /> <tag> out.heure = rules.num_heures.nb_heure; out.min = 0; out.nb_min = 60*rules.num_heures.nb_heure; out.text = meta.num_heures.text; </tag> </item>
+		<item> <ruleref uri="#num_min" /> minutes <tag> out.heure=0;out.min = rules.num_min.nb_min;out.nb_min=rules.num_min.nb_min;out.text = meta.num_min.text + " minutes" </tag> </item>
+	</one-of>	
+	<item repeat="0-1"> <ruleref uri="#num_min" /><tag>out.min = rules.num_min.nb_min;out.text = out.text +" "+ meta.num_min.text </tag> </item>	
+</rule>
+
+<!-- Numero des heures -->
+<rule id="num_heures" scope="public">
+        <one-of>
+	        <item> une heure <tag> out.nb_heure = 1; </tag> </item>
+	        <item>
+                <ruleref uri="grammaire_nombre_v3.grxml#nombre" /> heures <tag> out.nb_heure = rules.nombre.nb; </tag>
+            </item>
+        </one-of>
+				<tag> out.text = meta.current().text ; </tag>
+</rule>
+
+<!-- Numero des minutes -->
+<rule id="num_min" scope="public">
+          <one-of>
+	        <item> une <tag> out.nb_min = 1; out.text = "une "; </tag> </item>
+	        <item><ruleref uri="grammaire_nombre_v3.grxml#nombre" />
+                <tag> out.nb_min = rules.nombre.nb; out.text = out.text + meta.nombre.text; </tag>
+          	</item>
+          </one-of>
+</rule>
+
+<rule id="filler_debut_phrase">
+      <one-of>
+              <item> pour </item>
+              <item> Pour une duree de </item>
+      </one-of>
+</rule>
+
+</grammar>

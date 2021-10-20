@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- fichier grammaire_lieu.grxml -->
+
+<grammar version="1.0" root="Lieu" xml:lang="fr" >
+
+<meta name="description" content="grammaire des lieu"/>
+<meta name="author" content="Clément Petit"/>
+<meta name="copyright" content="free for any purpose"/>
+
+<!-- grammaire regle syntagmatique Horaire -> [Num_Heure +] Heure [+ Num_Min] [+ Av] -->
+<!-- cette grammaire extrait le texte correspondant a un horaire enoncee .text -->
+<!-- ainsi que les valeurs necessaires a la generation d'un horaire -->
+<rule id="Lieu" scope="public">
+
+	<item repeat="0-1"> <ruleref uri="#filler_debut_phrase" /> </item>
+	<one-of>
+		<item> <ruleref uri="#salle" /> <tag> out.nb_salle = rules.salle.nb_salle; out.text = meta.salle.text; </tag> </item>
+		<item> <ruleref uri="#batiment" /> <ruleref uri="#salle" />
+			<tag> out.nb_salle = rules.salle.nb_salle;out.num_bat=rules.batiment.num_bat; out.text = meta.batiment.text + "-" + meta.salle.text; </tag> 
+		</item>
+		<item> <ruleref uri="#batiment" /> <ruleref uri="#filler_debut_phrase"/> <ruleref uri="#salle" />
+			<tag> out.nb_salle = rules.salle.nb_salle;out.num_bat=rules.batiment.num_bat; out.text = meta.batiment.text + "-" + meta.salle.text; </tag> 
+		</item>
+		<item> <ruleref uri="#salle" /> <ruleref uri="#batiment" />
+			<tag> out.nb_salle = rules.salle.nb_salle;out.num_bat=rules.batiment.num_bat; out.text = meta.batiment.text + "-" + meta.salle.text; </tag> 
+		</item>
+		<item> <ruleref uri="#salle" /> <ruleref uri="#filler_debut_phrase"/> <ruleref uri="#batiment" />
+			<tag> out.nb_salle = rules.salle.nb_salle;out.num_bat=rules.batiment.num_bat; out.text = meta.batiment.text + "-" + meta.salle.text; </tag> 
+		</item>
+	</one-of>	
+</rule>
+
+<!-- Salles -->
+<rule id="salle" scope="public">
+          <one-of>
+	        <item> une <tag> out.nb_salle = 1; out.text = "une "; </tag> </item>
+	        <item><ruleref uri="grammaire_nombre_v3.grxml#nombre" /> <tag> out.nb_salle = rules.nombre.nb; out.text = meta.nombre.text; </tag>
+          	</item>
+          </one-of>
+</rule>
+
+<!-- Batiment -->
+<rule id="batiment" scope="public">
+          <one-of>
+	        <item> U1 <tag> out.num_bat = 1; out.text = "U1 "; </tag> </item>
+			<item> U2 <tag> out.num_bat = 2; out.text = "U2 "; </tag> </item>
+			<item> U3 <tag> out.num_bat = 3; out.text = "U3 "; </tag> </item>
+			<item> U4 <tag> out.num_bat = 4; out.text = "U4 "; </tag> </item>
+          </one-of>
+</rule>
+
+<rule id="filler_debut_phrase">
+      <one-of>
+              <item> dans la salle </item>
+              <item> la salle </item>
+			  <item> batiment </item>
+			  <item> salle </item>
+			  <item> le batiment </item>
+      </one-of>
+</rule>
+
+</grammar>

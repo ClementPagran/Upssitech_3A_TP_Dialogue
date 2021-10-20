@@ -92,7 +92,7 @@
                      <assign name="message_confirm" expr="'TRACE Numero confirme'" />
                  <else/>
                      <assign name="message_confirm" expr="'TRACE Numero non confirme'" />
-                     <clear namelist="num_abonne confirm" />
+                     <clear namelist="num_abonne confirm_num_abo" />
                  </if>
                  <!-- Comportement si le mode TRACE est active --> 
 
@@ -153,7 +153,7 @@
                      <assign name="message_confirm" expr="'TRACE Date confirme'" />
                  <else/>
                      <assign name="message_confirm" expr="'TRACE Date non confirme'" />
-                     <clear namelist="date confirm" />
+                     <clear namelist="resa_salle_date confirm_date" />
                  </if>
                  <!-- Comportement si le mode TRACE est active --> 
 
@@ -164,7 +164,7 @@
 
 </field>
 
-<!-- Champ/Slot Resa Salle date -->
+<!-- Champ/Slot Horaire -->
 <field name="resa_horaire">
 
 	 <prompt> Pouvez vous me donner l'heure de reservation ? </prompt>
@@ -173,22 +173,30 @@
      <grammar src="grammaire_horaire.grxml" type="application/srgs+xml" />
 
      <!-- Gestion des erreurs -->
-     <help> Donnez un horaire valide </help>
+     <help> Donnez un horaire valide (Exemple: huit heures trente / midi moins le quart) </help>
      <noinput> Je n'ai pas entendu. Pouvez-vous repeter ? </noinput>
      <nomatch> Je ne vous ai pas compris. Pouvez-vous me donner un nouvel horaire ? </nomatch>
 
          <!-- Comportement du systeme une fois ce champ rempli -->
 	 <filled>
+       <if cond="resa_horaire.heure &gt; 23">
+          Votre horaire ne correspond pas a une heure valide. Veuillez rentrer un heure valide.
+          <clear namelist="resa_horaire" />
+       <elseif cond="(resa_horaire.nb_min &lt; 450) || (resa_horaire.nb_min &gt; 1170)"/>
+          Vous avez donnez un horaire qui est en dehors des plages d'ouverture. Veuillez rentrer un nouvelle horaire.
+          <clear namelist="resa_horaire" />
+       <else/>
 	         Votre horaire est:  <value expr="resa_horaire.text" /> 			 
                  <if cond="mode_trace=='True'">
                    TRACE VALEUR Nb Heure  <value expr="resa_horaire.heure" />
 				           TRACE VALEUR Nb Minute  <value expr="resa_horaire.min" />
 				           TRACE VALEUR Nb min total  <value expr="resa_horaire.nb_min" />
                  </if>
+       </if>
      </filled>
   </field>
 
-<!-- Champ/Slot de confirmation  -->
+<!-- Champ/Slot de confirmation Horaire  -->
 <field name="confirm_horaire">
          <prompt> Pouvez-vous me le confirmer ? </prompt>
          
@@ -209,7 +217,71 @@
                      <assign name="message_confirm" expr="'TRACE Horaire confirme'" />
                  <else/>
                      <assign name="message_confirm" expr="'TRACE Horaire non confirme'" />
-                     <clear namelist="horaire confirm" />
+                     <clear namelist="resa_horaire confirm_horaire" />
+                 </if>
+                 <!-- Comportement si le mode TRACE est active --> 
+
+                 <if cond="mode_trace=='True'">
+                   TRACE Reponse <value expr="message_confirm" />
+                 </if>
+         </filled>
+
+</field>
+
+<!-- Champ/Slot Duree -->
+<field name="resa_duree">
+
+	 <prompt> Pouvez vous me donner la duree de reservation ? </prompt>
+
+     <!-- Appel a une grammaire externe -->
+     <grammar src="grammaire_duree.grxml" type="application/srgs+xml" />
+
+     <!-- Gestion des erreurs -->
+     <help> Donnez une duree valide (Exemple: huit heures trente / quarante minutes) </help>
+     <noinput> Je n'ai pas entendu. Pouvez-vous repeter ? </noinput>
+     <nomatch> Je ne vous ai pas compris. Pouvez-vous me donner une nouvelle duree ? </nomatch>
+
+         <!-- Comportement du systeme une fois ce champ rempli -->
+	 <filled>
+       <if cond="resa_duree.heure == 0 &amp;&amp; resa_duree.min &lt; 30">
+          Votre duree est insuffisante (Minimum 30 minutes pour une reservation). Veuillez rentrer une nouvelle duree.
+          <clear namelist="resa_duree" />
+       <elseif cond="resa_duree.nb_min &gt; 240"/>
+          Votre durée est trop importante (Maximum 4h pour une reservation). Veuillez rentrer une nouvelle duree.
+          <clear namelist="resa_duree" />
+       <else/>
+	         Votre durée est:  <value expr="resa_duree.text" /> 			 
+                 <if cond="mode_trace=='True'">
+                   TRACE VALEUR Nb Heure  <value expr="resa_duree.heure" />
+				           TRACE VALEUR Nb Minute  <value expr="resa_duree.min" />
+				           TRACE VALEUR Nb min total  <value expr="resa_duree.nb_min" />
+                 </if>
+       </if>
+     </filled>
+  </field>
+
+<!-- Champ/Slot de confirmation Duree  -->
+<field name="confirm_duree">
+         <prompt> Pouvez-vous me le confirmer ? </prompt>
+         
+         <!-- Appel a une grammaire externe -->
+         <grammar src="grammaire_act_lang_confirmation_v2.grxml" type="application/srgs+xml" />
+         
+         <!-- Gestion des erreurs -->
+         <help> Repondez par oui ou non </help>
+         <noinput> Je n'ai pas entendu. Pouvez-vous repeter ? </noinput>
+         <nomatch> Je ne vous ai pas compris. Pouvez-vous repondre par oui ou par non </nomatch>
+         
+         <!-- Comportement du systeme apres confirmation/infirmation --> 
+         <!-- OK ==> On sort ou on passe a une autre sous-tache -->
+         <!-- NOK ==> On efface tout et on recommence --> 
+
+         <filled>
+                 <if cond="confirm_duree=='True'">
+                     <assign name="message_confirm" expr="'TRACE Duree confirme'" />
+                 <else/>
+                     <assign name="message_confirm" expr="'TRACE Duree non confirme'" />
+                     <clear namelist="resa_duree confirm_duree" />
                  </if>
                  <!-- Comportement si le mode TRACE est active --> 
 

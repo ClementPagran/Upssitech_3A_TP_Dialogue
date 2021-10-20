@@ -13,7 +13,7 @@
 <rule id="Horaire" scope="public">
 
 	<item repeat="0-1"> <ruleref uri="#filler_debut_phrase" /> </item>
-	<item> <ruleref uri="#num_heures" /> <tag> out.heure = rules.num_heures.nb_heure; out.min = 60*rules.num_heures.nb_heure; out.text = meta.num_heures.text; </tag> </item>
+	<item> <ruleref uri="#num_heures" /> <tag> out.heure = rules.num_heures.nb_heure; out.min = 0; out.nb_min = 60*rules.num_heures.nb_heure; out.text = meta.num_heures.text; </tag> </item>
 	<item repeat="0-1"> <ruleref uri="#num_min" />
 		<tag>
 				if(rules.num_min.flag_heure){
