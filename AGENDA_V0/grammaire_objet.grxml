@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- fichier grammaire_objet.grxml -->
+
+<grammar version="1.0" root="Objet" xml:lang="fr" >
+
+<meta name="description" content="grammaire des objet de la réunion"/>
+<meta name="author" content="Clément Petit"/>
+<meta name="copyright" content="free for any purpose"/>
+
+<!-- grammaire regle syntagmatique Horaire -> [Num_Heure +] Heure [+ Num_Min] [+ Av] -->
+<!-- cette grammaire extrait le texte correspondant a un horaire enoncee .text -->
+<!-- ainsi que les valeurs necessaires a la generation d'un horaire -->
+<rule id="Objet" scope="public">
+
+	<item repeat="0-1"> <ruleref uri="#filler_debut_phrase" /> </item>
+	<item> <ruleref uri="#list_objet" /> <tag>out.obj=rules.list_objet.obj;out.text = meta.list_objet.text</tag></item>
+	
+</rule>
+
+
+<!-- Liste des objets d'une réunion -->
+<rule id="list_objet" scope="public">
+          <one-of>
+	        <item> Information 				<tag> out.obj = 1; out.text = "Information"; </tag> </item>
+			<item> Revue 					<tag> out.obj = 2; out.text = "Revue"; </tag> </item>
+			<item> Echanges 				<tag> out.obj = 3; out.text = "Echanges"; </tag> </item>
+			<item> Resolution de problemes 	<tag> out.obj = 4; out.text = "Resolution de problemes"; </tag> </item>
+			<item> Prise de decision 		<tag> out.obj = 5; out.text = "Prise de decision"; </tag> </item>
+          </one-of>
+</rule>
+
+<rule id="filler_debut_phrase">
+      <one-of>
+              <item> l'objet est </item>
+              <item> c'est </item>
+      </one-of>
+</rule>
+
+</grammar>

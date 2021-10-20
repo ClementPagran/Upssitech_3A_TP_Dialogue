@@ -14,18 +14,18 @@
 
 	<item repeat="0-1"> <ruleref uri="#filler_debut_phrase" /> </item>
 	<one-of>
-		<item> <ruleref uri="#salle" /> <tag> out.nb_salle = rules.salle.nb_salle; out.text = meta.salle.text; </tag> </item>
+		<item> <ruleref uri="#salle" /> <tag> out.nb_salle = rules.salle.nb_salle; out.num_bat=0; out.text = "Salle " + meta.salle.text; </tag> </item>
 		<item> <ruleref uri="#batiment" /> <ruleref uri="#salle" />
-			<tag> out.nb_salle = rules.salle.nb_salle;out.num_bat=rules.batiment.num_bat; out.text = meta.batiment.text + "-" + meta.salle.text; </tag> 
+			<tag> out.nb_salle = rules.salle.nb_salle;out.num_bat=rules.batiment.num_bat; out.text = meta.batiment.text + " - " + meta.salle.text; </tag> 
 		</item>
 		<item> <ruleref uri="#batiment" /> <ruleref uri="#filler_debut_phrase"/> <ruleref uri="#salle" />
-			<tag> out.nb_salle = rules.salle.nb_salle;out.num_bat=rules.batiment.num_bat; out.text = meta.batiment.text + "-" + meta.salle.text; </tag> 
+			<tag> out.nb_salle = rules.salle.nb_salle;out.num_bat=rules.batiment.num_bat; out.text = meta.batiment.text + " - " + meta.salle.text; </tag> 
 		</item>
 		<item> <ruleref uri="#salle" /> <ruleref uri="#batiment" />
-			<tag> out.nb_salle = rules.salle.nb_salle;out.num_bat=rules.batiment.num_bat; out.text = meta.batiment.text + "-" + meta.salle.text; </tag> 
+			<tag> out.nb_salle = rules.salle.nb_salle;out.num_bat=rules.batiment.num_bat; out.text = meta.batiment.text + " - " + meta.salle.text; </tag> 
 		</item>
 		<item> <ruleref uri="#salle" /> <ruleref uri="#filler_debut_phrase"/> <ruleref uri="#batiment" />
-			<tag> out.nb_salle = rules.salle.nb_salle;out.num_bat=rules.batiment.num_bat; out.text = meta.batiment.text + "-" + meta.salle.text; </tag> 
+			<tag> out.nb_salle = rules.salle.nb_salle;out.num_bat=rules.batiment.num_bat; out.text = meta.batiment.text + " - " + meta.salle.text; </tag> 
 		</item>
 	</one-of>	
 </rule>

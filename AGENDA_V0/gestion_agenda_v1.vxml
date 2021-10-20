@@ -25,6 +25,7 @@
 <!-- initialisation des variables internes au formulaire -->
 <var name="reponse" />
 <var name="message_confirm" />
+<var name="demande_obj" />
 
 <!-- declaration des variables Javascript -->
 <script>
@@ -34,7 +35,7 @@
        <!-- Valeur de la date fournie par l'utilisateur -->
 		var date_choisie = new Date();
        <!-- Activation/desactivation du mode TRACE -->
-		var mode_trace ="True";
+		var mode_trace ="False";
 </script>
 
 <block>
@@ -102,6 +103,12 @@
          </filled>
 
 </field>
+
+<block>
+       <!-- Simulation autorisation d'acces -->
+	Veuillez patienter ... Nous nous connectons a la base abonne....
+        Bonjour Monsieur Dupont. Vous pouvez maintenant acceder a votre agenda !
+</block>
 
 <block>
    	Vous allez maintenant pouvoir reserver une salle. 
@@ -247,10 +254,10 @@
           Votre duree est insuffisante (Minimum 30 minutes pour une reservation). Veuillez rentrer une nouvelle duree.
           <clear namelist="resa_duree" />
        <elseif cond="resa_duree.nb_min &gt; 240"/>
-          Votre durée est trop importante (Maximum 4h pour une reservation). Veuillez rentrer une nouvelle duree.
+          Votre duree est trop importante (Maximum 4h pour une reservation). Veuillez rentrer une nouvelle duree.
           <clear namelist="resa_duree" />
        <else/>
-	         Votre durée est:  <value expr="resa_duree.text" /> 			 
+	         Votre duree est:  <value expr="resa_duree.text" /> 			 
                  <if cond="mode_trace=='True'">
                    TRACE VALEUR Nb Heure  <value expr="resa_duree.heure" />
 				           TRACE VALEUR Nb Minute  <value expr="resa_duree.min" />
@@ -292,11 +299,158 @@
 
 </field>
 
+<!-- Champ/Slot Lieu -->
+<field name="resa_lieu">
+
+	 <prompt> Pouvez vous me donner lieu de reunion ? </prompt>
+
+     <!-- Appel a une grammaire externe -->
+     <grammar src="grammaire_lieu.grxml" type="application/srgs+xml" />
+
+     <!-- Gestion des erreurs -->
+     <help> Donnez un lieu valide (Exemple: salle cent neuf batiment U2 / dans la salle cinquante deux) </help>
+     <noinput> Je n'ai pas entendu. Pouvez-vous repeter ? </noinput>
+     <nomatch> Je ne vous ai pas compris. Pouvez-vous me donner un nouveau lieu ? </nomatch>
+
+         <!-- Comportement du systeme une fois ce champ rempli -->
+	 <filled>
+	         Votre lieu est:  <value expr="resa_lieu.text" /> 			 
+                 <if cond="mode_trace=='True'">
+                   TRACE VALEUR Nb Salle  <value expr="resa_lieu.nb_salle" />
+                   <if cond="resa_lieu.num_bat!=0">
+				              TRACE VALEUR Nb Batiment  <value expr="resa_lieu.num_bat" />
+                   </if>
+                 </if>
+     </filled>
+  </field>
+
+<!-- Champ/Slot de confirmation Duree  -->
+<field name="confirm_lieu">
+         <prompt> Pouvez-vous me le confirmer ? </prompt>
+         
+         <!-- Appel a une grammaire externe -->
+         <grammar src="grammaire_act_lang_confirmation_v2.grxml" type="application/srgs+xml" />
+         
+         <!-- Gestion des erreurs -->
+         <help> Repondez par oui ou non </help>
+         <noinput> Je n'ai pas entendu. Pouvez-vous repeter ? </noinput>
+         <nomatch> Je ne vous ai pas compris. Pouvez-vous repondre par oui ou par non </nomatch>
+         
+         <!-- Comportement du systeme apres confirmation/infirmation --> 
+         <!-- OK ==> On sort ou on passe a une autre sous-tache -->
+         <!-- NOK ==> On efface tout et on recommence --> 
+
+         <filled>
+                 <if cond="confirm_lieu=='True'">
+                     <assign name="message_confirm" expr="'TRACE Duree confirme'" />
+                 <else/>
+                     <assign name="message_confirm" expr="'TRACE Duree non confirme'" />
+                     <clear namelist="resa_lieu confirm_lieu" />
+                 </if>
+                 <!-- Comportement si le mode TRACE est active --> 
+
+                 <if cond="mode_trace=='True'">
+                   TRACE Reponse <value expr="message_confirm" />
+                 </if>
+         </filled>
+
+</field>
+
+
+
+<!-- Champ/Slot Objet Réunion -->
+<field name="demande_resa_objet">
+
+	 <prompt> Voulez vous renseigner l'objet de la reunion ? </prompt>
+
+     <!-- Appel a une grammaire externe -->
+     <grammar src="grammaire_act_lang_confirmation_v2.grxml" type="application/srgs+xml" />
+    
+    <!-- Gestion des erreurs -->
+         <help> Repondez par oui ou non </help>
+         <noinput> Je n'ai pas entendu. Pouvez-vous repeter ? </noinput>
+         <nomatch> Je ne vous ai pas compris. Pouvez-vous repondre par oui ou par non </nomatch>
+
+         <!-- Comportement du systeme une fois ce champ rempli -->
+	 <filled>
+      <if cond="demande_resa_objet=='True'">
+            <assign name="message_confirm" expr="'TRACE Objet demande'" />
+            <clear namelist="resa_objet confirm_objet"/>
+      <else/>
+            <assign name="message_confirm" expr="'TRACE Objet non demande'" />
+            
+      </if>
+                 <!-- Comportement si le mode TRACE est active --> 
+
+      <if cond="mode_trace=='True'">
+                   TRACE Reponse <value expr="message_confirm" />
+      </if>
+
+   </filled>
+  </field>
+
+  <field name="resa_objet" expr="'Fill'">
+
+	 <prompt> Quelle est l'objet de votre reunion ? </prompt>
+   <prompt>
+    Voici la liste des objets disponible: Information / Revue / Echanges / Resolution de problemes / Prise de decision </prompt>
+
+     <!-- Appel a une grammaire externe -->
+     <grammar src="grammaire_objet.grxml" type="application/srgs+xml" />
+
+     <!-- Gestion des erreurs -->
+     <help> Donnez un objet valide (voir liste) </help>
+     <noinput> Je n'ai pas entendu. Pouvez-vous repeter ? </noinput>
+     <nomatch> Je ne vous ai pas compris. Pouvez-vous me donner un nouvel objet ? </nomatch>
+
+         <!-- Comportement du systeme une fois ce champ rempli -->
+	 <filled>
+          <if cond="demande_resa_objet=='True'">
+	         Votre objet est:  <value expr="resa_objet.text" /> 			 
+                 <if cond="mode_trace=='True'">
+                   TRACE VALEUR Nb objet  <value expr="resa_objet.obj" />
+                 </if>
+          </if>
+     </filled>
+  </field>
+
+  <field name="confirm_objet" expr="'Fill'">
+         <prompt> Pouvez-vous me le confirmer ? </prompt>
+         
+         <!-- Appel a une grammaire externe -->
+         <grammar src="grammaire_act_lang_confirmation_v2.grxml" type="application/srgs+xml" />
+         
+         <!-- Gestion des erreurs -->
+         <help> Repondez par oui ou non </help>
+         <noinput> Je n'ai pas entendu. Pouvez-vous repeter ? </noinput>
+         <nomatch> Je ne vous ai pas compris. Pouvez-vous repondre par oui ou par non </nomatch>
+         
+         <!-- Comportement du systeme apres confirmation/infirmation --> 
+         <!-- OK ==> On sort ou on passe a une autre sous-tache -->
+         <!-- NOK ==> On efface tout et on recommence --> 
+
+         <filled>
+                 <if cond="confirm_objet=='True'">
+                     <assign name="message_confirm" expr="'TRACE Objet confirme'" />
+                 <else/>
+                     <assign name="message_confirm" expr="'TRACE Objet non confirme'" />
+                     <clear namelist="resa_objet confirm_objet" />
+                 </if>
+                 <!-- Comportement si le mode TRACE est active --> 
+
+                 <if cond="mode_trace=='True'">
+                   TRACE Reponse <value expr="message_confirm" />
+                 </if>
+         </filled>
+
+</field>
+
+
 
 <block>
        <!-- Simulation autorisation d'acces -->
-	Veuillez patienter ... Nous nous connectons a la base abonne....
-        Bonjour Monsieur Dupont. Vous pouvez maintenant acceder a votre agenda !
+	Veuillez patienter ... Mise a jour de votre agenda....
+    La reunion a bien ete ajoute a votre agenda.
 </block>
 
 </form>
