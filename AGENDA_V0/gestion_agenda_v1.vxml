@@ -123,7 +123,7 @@
      <grammar src="grammaire_dates_v3.grxml" type="application/srgs+xml" />
 
      <!-- Gestion des erreurs -->
-     <help> Donnez une date valide </help>
+     <help> Donnez une date valide (Example: Lundi deux mars) </help>
      <noinput> Je n'ai pas entendu. Pouvez-vous repeter ? </noinput>
      <nomatch> Je ne vous ai pas compris. Pouvez-vous me donner une nouvelle date ? </nomatch>
 
@@ -401,7 +401,7 @@
      <!-- Gestion des erreurs -->
      <help> Donnez un objet valide (voir liste) </help>
      <noinput> Je n'ai pas entendu. Pouvez-vous repeter ? </noinput>
-     <nomatch> Je ne vous ai pas compris. Pouvez-vous me donner un nouvel objet ? </nomatch>
+     <nomatch> Je ne vous ai pas compris. Pouvez-vous me donner un nouvel objet de la liste ? </nomatch>
 
          <!-- Comportement du systeme une fois ce champ rempli -->
 	 <filled>
