@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- fichier confirmer_Date_donner_Horaire.grxml -->
+
+<grammar version="1.0" root="confirmDateetHoraire" xml:lang="fr" >
+
+<meta name="description" content="grammaire des objet de la réunion"/>
+<meta name="author" content="Clément Petit"/>
+<meta name="copyright" content="free for any purpose"/>
+
+<!-- grammaire regle syntagmatique Horaire -> [Num_Heure +] Heure [+ Num_Min] [+ Av] -->
+<!-- cette grammaire extrait le texte correspondant a un horaire enoncee .text -->
+<!-- ainsi que les valeurs necessaires a la generation d'un horaire -->
+<rule id="confirmDateetHoraire" scope="public">
+	<one-of>
+		<item> Non <tag>out.confirm=0;</tag> </item> 
+		<item> <ruleref uri="#grammaire_horaire.grxml#Horaire" />
+		 		<tag> out.confirm=1;
+				 	  out.heure = rules.Horaire.heure;
+				 	  out.min = rules.Horaire.min;
+					  out.nb_min = rules.Horaire.nb_min;
+					  out.text = rules.Horaire.text;
+				</tag>
+	    </item>
+		<item> Non <ruleref uri="grammaire_dates_v3.grxml#Date" /> 
+			    <tag>   out.confirm=2;
+						out.num_jour = Date.num_jour ;
+	                    out.nb_jour = Date.nb_jour ;
+                        out.num_mois = Date.num_mois ;
+                        out.nb_annee = Date.nb_annee;
+						out.text = Date.text;
+                </tag>
+		</item>
+	</one-of>
+	
+</rule>
+
+<rule id="filler_debut_phrase">
+      <one-of>
+              <item> il est </item>
+              <item> c'est </item>
+			  <item> a </item>
+      </one-of>
+</rule>
+
+</grammar>

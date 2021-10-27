@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- fichier grammaire_objet.grxml -->
+
+<grammar version="1.0" root="Quit" xml:lang="fr" >
+
+<meta name="description" content="grammaire des objet de la réunion"/>
+<meta name="author" content="Clément Petit"/>
+<meta name="copyright" content="free for any purpose"/>
+
+<!-- grammaire regle syntagmatique Horaire -> [Num_Heure +] Heure [+ Num_Min] [+ Av] -->
+<!-- cette grammaire extrait le texte correspondant a un horaire enoncee .text -->
+<!-- ainsi que les valeurs necessaires a la generation d'un horaire -->
+<rule id="Quit" scope="public">
+
+	<item repeat="0-1"> <ruleref uri="#filler_debut_phrase" /> </item>
+	<item> <ruleref uri="#option_quitter" /> </item>
+	
+</rule>
+
+
+<!-- Liste des objets d'une réunion -->
+<rule id="option_quitter" scope="public">
+          <one-of>
+	        <item> quitter  </item>
+			<item> areter 	</item>
+			<item> stop     </item>
+			<item> stoper     </item>
+			<item> quit 	</item>
+			<item> exit		</item>
+          </one-of>
+</rule>
+
+<rule id="filler_debut_phrase">
+      <one-of>
+              <item> je veux </item>
+              <item> je voudrai </item>
+			  <item> je souhaiterai </item>
+      </one-of>
+</rule>
+
+</grammar>

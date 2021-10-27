@@ -1,0 +1,112 @@
+Interpreting VoiceXML document file:/D:/Bureau/Upssitech/3A/Dialogue/Upssitech_3A_TP_Dialogue/AGENDA_V0/gestion_agenda_v1.vxml
+
+Bienvenue sur le service de gestion de votre agenda. Aujourd'hui nous sommes le
+Thu Dec 09 2010 15:30:00 GMT+0100
+1291905000000
+Quel est votre numero d'abonne ?
+KEYB> trois mille
+Votre numero d'abonne est le invalide ! Veuillez en entrer un nouveau !
+Bienvenue sur le service de gestion de votre agenda. Aujourd'hui nous sommes le
+Thu Dec 09 2010 15:30:00 GMT+0100
+1291905000000
+Quel est votre numero d'abonne ?
+Je n'ai pas entendu. Pouvez-vous me preciser votre numero d'abonne ?
+KEYB> deux
+Votre numero d'abonne est le
+deux
+Pouvez-vous me le confirmer ?
+KEYB> oui
+Veuillez patienter ... Nous nous connectons a la base abonne.... Bonjour Monsieur Dupont. Vous pouvez maintenant acceder a votre agenda !
+Vous allez maintenant pouvoir reserver une salle.
+Pouvez vous me donner la date de reservation ?
+Je n'ai pas entendu. Pouvez-vous repeter ?
+Je n'ai pas entendu. Pouvez-vous repeter ?
+KEYB> aide
+Donnez une date valide (Example: Lundi deux mars)
+KEYBle
+Je ne vous ai pas compris. Pouvez-vous me donner une nouvelle date ?
+KEYB> le dix mai
+Votre date est:
+dix mai
+Pouvez-vous me le confirmer ?
+Je n'ai pas entendu. Pouvez-vous repeter ?
+Je n'ai pas entendu. Pouvez-vous repeter ?
+KEYB> non
+Pouvez vous me donner la date de reservation ?
+KEYB> six mai
+Votre date est:
+six mai
+Pouvez-vous me le confirmer ?
+KEYB> oui
+Pouvez vous me donner l'heure de reservation ?
+KEYB> une heure
+Vous avez donnez un horaire qui est en dehors des plages d'ouverture. Veuillez rentrer un nouvelle horaire.
+Pouvez vous me donner l'heure de reservation ?
+KEYB> aide
+Donnez un horaire valide (Exemple: huit heures trente / midi moins le quart)
+KEYB> midi
+Votre horaire est:
+midi
+Pouvez-vous me le confirmer ?
+KEYB> oui
+Pouvez vous me donner la duree de reservation ?
+Je n'ai pas entendu. Pouvez-vous repeter ?
+Je n'ai pas entendu. Pouvez-vous repeter ?
+KEYB> aide
+Donnez une duree valide (Exemple: huit heures trente / quarante minutes)
+KEYB> quarante minutes
+Votre duree est:
+quarante minutes
+Pouvez-vous me le confirmer ?
+KEYB> non
+Pouvez vous me donner la duree de reservation ?
+KEYB> deux heures
+Votre duree est:
+deux heures
+Pouvez-vous me le confirmer ?
+KEYB> oui
+Pouvez vous me donner lieu de reunion ?
+KEYB> aide
+Donnez un lieu valide (Exemple: salle cent neuf batiment U2 / dans la salle cinquante deux)
+Je n'ai pas entendu. Pouvez-vous repeter ?
+KEYB> U2 salle cent neuf
+Votre lieu est:
+U2 - cent neuf
+Pouvez-vous me le confirmer ?
+KEYB> non
+Pouvez vous me donner lieu de reunion ?
+KEYB> salle cent neuf U2
+Votre lieu est:
+U2 - cent neuf
+Pouvez-vous me le confirmer ?
+KEYB> oui
+Voulez vous renseigner l'objet de la reunion ?
+KEYB> oui
+Quelle est l'objet de votre reunion ?
+Voici la liste des objets disponible: Information / Revue / Echanges / Resolution de problemes / Prise de decision
+KEYB> Revue
+Votre objet est:
+Revue
+Pouvez-vous me le confirmer ?
+KEYB> oui
+Veuillez patienter ... Mise a jour de votre agenda.... La reunion a bien ete ajoute a votre agenda.
+
+D:\Bureau\Upssitech\3A\Dialogue\Upssitech_3A_TP_Dialogue\Optimtalk>ot_vxml_interpreter.exe ..\AGENDA_V0\gestion_agenda_v1.vxml
+
+OptimTalk VoiceXML interpreter (version 1.10)
+==============================
+Copyright (c) 2004-2010 OptimSys, s.r.o., Czech Republic
+  http://www.optimsys.cz
+
+Interpreting VoiceXML document file:/D:/Bureau/Upssitech/3A/Dialogue/Upssitech_3A_TP_Dialogue/AGENDA_V0/gestion_agenda_v1.vxml
+
+Bienvenue sur le service de gestion de votre agenda. Aujourd'hui nous sommes le
+Thu Dec 09 2010 15:30:00 GMT+0100
+1291905000000
+Quel est votre numero d'abonne ?
+KEYB> deux
+Votre numero d'abonne est le
+deux
+Pouvez-vous me le confirmer ?
+KEYB> quitter
+Je ne vous ai pas compris. Pouvez-vous repondre par oui ou par non

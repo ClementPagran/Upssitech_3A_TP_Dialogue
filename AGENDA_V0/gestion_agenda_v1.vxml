@@ -18,6 +18,15 @@
 <grammar src="grammaire_aide.grxml" type="application/srgs+xml" />
 </link>
 
+<link event="quit">
+<grammar src="grammaire_quit.grxml" type="application/srgs+xml" />
+</link>
+
+<catch event="quit">
+  Vous avez decide de quitter l'application sans finaliser la demande. Merci et a bientot !
+  <exit/>
+</catch>
+
 <!-- dialogue de demande d'information -->
 
 <form id="agenda">
@@ -123,13 +132,13 @@
      <grammar src="grammaire_dates_v3.grxml" type="application/srgs+xml" />
 
      <!-- Gestion des erreurs -->
-     <help> Donnez une date valide (Example: Lundi deux mars) </help>
+     <help> Donnez une date valide (Exemple: Lundi deux mars) </help>
      <noinput> Je n'ai pas entendu. Pouvez-vous repeter ? </noinput>
      <nomatch> Je ne vous ai pas compris. Pouvez-vous me donner une nouvelle date ? </nomatch>
 
          <!-- Comportement du systeme une fois ce champ rempli -->
 	 <filled>
-	         Votre date est:  <value expr="resa_salle_date.text" /> 			 
+	         Votre date est le  <value expr="resa_salle_date.text" /> 			 
                  <if cond="mode_trace=='True'">
                    TRACE VALEUR Num Jour  <value expr="resa_salle_date.num_jour" />
 				   TRACE VALEUR Nb Jour  <value expr="resa_salle_date.nb_jour" />
@@ -193,7 +202,7 @@
           Vous avez donnez un horaire qui est en dehors des plages d'ouverture. Veuillez rentrer un nouvelle horaire.
           <clear namelist="resa_horaire" />
        <else/>
-	         Votre horaire est:  <value expr="resa_horaire.text" /> 			 
+	         Votre heure de reservation est   <value expr="resa_horaire.text" /> 			 
                  <if cond="mode_trace=='True'">
                    TRACE VALEUR Nb Heure  <value expr="resa_horaire.heure" />
 				           TRACE VALEUR Nb Minute  <value expr="resa_horaire.min" />
@@ -257,7 +266,7 @@
           Votre duree est trop importante (Maximum 4h pour une reservation). Veuillez rentrer une nouvelle duree.
           <clear namelist="resa_duree" />
        <else/>
-	         Votre duree est:  <value expr="resa_duree.text" /> 			 
+	         Votre duree est   <value expr="resa_duree.text" /> 			 
                  <if cond="mode_trace=='True'">
                    TRACE VALEUR Nb Heure  <value expr="resa_duree.heure" />
 				           TRACE VALEUR Nb Minute  <value expr="resa_duree.min" />
@@ -314,7 +323,7 @@
 
          <!-- Comportement du systeme une fois ce champ rempli -->
 	 <filled>
-	         Votre lieu est:  <value expr="resa_lieu.text" /> 			 
+	         Votre lieu est   <value expr="resa_lieu.text" /> 			 
                  <if cond="mode_trace=='True'">
                    TRACE VALEUR Nb Salle  <value expr="resa_lieu.nb_salle" />
                    <if cond="resa_lieu.num_bat!=0">
@@ -406,7 +415,7 @@
          <!-- Comportement du systeme une fois ce champ rempli -->
 	 <filled>
           <if cond="demande_resa_objet=='True'">
-	         Votre objet est:  <value expr="resa_objet.text" /> 			 
+	         Votre objet est   <value expr="resa_objet.text" /> 			 
                  <if cond="mode_trace=='True'">
                    TRACE VALEUR Nb objet  <value expr="resa_objet.obj" />
                  </if>
