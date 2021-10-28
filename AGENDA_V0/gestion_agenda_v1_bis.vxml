@@ -35,6 +35,7 @@
 <var name="reponse" />
 <var name="message_confirm" />
 <var name="demande_obj" />
+<var name="first==True" />
 
 <!-- declaration des variables Javascript -->
 <script>
@@ -121,64 +122,71 @@
      <nomatch> Je ne vous ai pas compris. Pouvez-vous me donner une nouvelle date ? </nomatch>
 
          <!-- Comportement du systeme une fois ce champ rempli -->
-	 <filled>
-	         Votre date est le  <value expr="resa_salle_date.text" /> 			 
-                 <if cond="mode_trace=='True'">
-                   TRACE VALEUR Num Jour  <value expr="resa_salle_date.num_jour" />
+	 <filled>			 
+          <if cond="mode_trace=='True'">
+           TRACE VALEUR Num Jour  <value expr="resa_salle_date.num_jour" />
 				   TRACE VALEUR Nb Jour  <value expr="resa_salle_date.nb_jour" />
 				   TRACE VALEUR Num Mois  <value expr="resa_salle_date.num_mois" />
 				   TRACE VALEUR Nb Annee <value expr="resa_salle_date.nb_annee" />
-                 </if>
+          </if>
      </filled>
   </field>
   
-<subdialog name="confirm_date" src="confirmation_user.vxml#confirmation_form">
+<!-- Champ/Slot de confirmation  -->
+<field name="confirm_date">
+            <prompt> Vous voulez reserver une salle pour le <value expr="resa_salle_date.text" />. A quelle heure ? </prompt>
+
+         <!-- Appel a une grammaire externe -->
+         <grammar src="confirmer_Date_donner_Horaire.grxml" type="application/srgs+xml" />
+         
+         <!-- Gestion des erreurs -->
+         <help> Si vous voulez modifier la date, dites "non" ou "non" et la nouvelle date. Sinon renseignez l'horaire de reservation </help>
+         <noinput> Je n'ai pas entendu. Pouvez-vous repeter ? </noinput>
+         <nomatch> Je ne vous ai pas compris. Pouvez-vous répetez. </nomatch>
+
          <filled>
-                 <if cond="confirm_date.confirmation=='True'">
-                     <assign name="message_confirm" expr="'TRACE Date confirme'" />
-                 <else/>
-                     <assign name="message_confirm" expr="'TRACE Date non confirme'" />
+                 <!-- date non confirmee -->
+                 <if cond="confirm_date.confirm==0">
+                     <assign name="message_confirm" expr="'TRACE Date Non confirme'" />
                      <clear namelist="resa_salle_date confirm_date" />
+                 <!-- date confirmee et passage horaire -->
+                 <elseif cond="confirm_date.confirm==1"/>
+                     <assign name="message_confirm" expr="'TRACE Date confirmee'" />
+                     <if cond="confirm_date.heure &gt; 23">
+                        Votre horaire ne correspond pas a une heure valide. Veuillez rentrer un heure valide.
+                        <assign name="first" expr="'False'" />
+                        <clear namelist="confirm_date" />
+                     <elseif cond="(confirm_date.nb_min &lt; 450) || (confirm_date.nb_min &gt; 1170)"/>
+                        Vous avez donnez un horaire qui est en dehors des plages d'ouverture. Veuillez rentrer un nouvelle horaire.
+                        <assign name="first" expr="'False'" />
+                        <clear namelist="confirm_date" />
+                     <else/>
+                        Votre heure de reservation est   <value expr="confirm_date.text" /> 			 
+                              <if cond="mode_trace=='True'">
+                                TRACE VALEUR Nb Heure  <value expr="confirm_date.heure" />
+                                TRACE VALEUR Nb Minute  <value expr="confirm_date.min" />
+                                TRACE VALEUR Nb min total  <value expr="confirm_date.nb_min" />
+                              </if>
+                       </if>
+                 <!-- date non confirmee et corrigé -->
+                 <elseif cond="confirm_date.confirm==2"/>
+                     <assign name="message_confirm" expr="'TRACE Date NON confirmee mais rectifiee'" />
+                     <assign name="resa_salle_date.num_jour" expr="confirm_date.num_jour" />
+                     <assign name="resa_salle_date.nb_jour" expr="confirm_date.nb_jour" />
+                     <assign name="resa_salle_date.num_mois" expr="confirm_date.num_mois" />
+                     <assign name="resa_salle_date.nb_annee" expr="confirm_date.nb_annee" />
+                     <assign name="resa_salle_date.text" expr="confirm_date.text" />
+                     <clear namelist="confirm_date" />
                  </if>
+
                  <!-- Comportement si le mode TRACE est active --> 
 
                  <if cond="mode_trace=='True'">
                    TRACE Reponse <value expr="message_confirm" />
                  </if>
          </filled>
-</subdialog>
 
-<!-- Champ/Slot Horaire -->
-<field name="resa_horaire">
-
-	 <prompt> Pouvez vous me donner l'heure de reservation ? </prompt>
-
-     <!-- Appel a une grammaire externe -->
-     <grammar src="grammaire_horaire.grxml" type="application/srgs+xml" />
-
-     <!-- Gestion des erreurs -->
-     <help> Donnez un horaire valide (Exemple: huit heures trente / midi moins le quart) </help>
-     <noinput> Je n'ai pas entendu. Pouvez-vous repeter ? </noinput>
-     <nomatch> Je ne vous ai pas compris. Pouvez-vous me donner un nouvel horaire ? </nomatch>
-
-         <!-- Comportement du systeme une fois ce champ rempli -->
-	 <filled>
-       <if cond="resa_horaire.heure &gt; 23">
-          Votre horaire ne correspond pas a une heure valide. Veuillez rentrer un heure valide.
-          <clear namelist="resa_horaire" />
-       <elseif cond="(resa_horaire.nb_min &lt; 450) || (resa_horaire.nb_min &gt; 1170)"/>
-          Vous avez donnez un horaire qui est en dehors des plages d'ouverture. Veuillez rentrer un nouvelle horaire.
-          <clear namelist="resa_horaire" />
-       <else/>
-	         Votre heure de reservation est   <value expr="resa_horaire.text" /> 			 
-                 <if cond="mode_trace=='True'">
-                   TRACE VALEUR Nb Heure  <value expr="resa_horaire.heure" />
-				           TRACE VALEUR Nb Minute  <value expr="resa_horaire.min" />
-				           TRACE VALEUR Nb min total  <value expr="resa_horaire.nb_min" />
-                 </if>
-       </if>
-     </filled>
-  </field>
+</field>
 
 <subdialog name="confirm_horaire" src="confirmation_user.vxml#confirmation_form">
          <filled>
@@ -186,7 +194,7 @@
                      <assign name="message_confirm" expr="'TRACE Horaire confirme'" />
                  <else/>
                      <assign name="message_confirm" expr="'TRACE Horaire non confirme'" />
-                     <clear namelist="resa_horaire confirm_horaire" />
+                     <clear namelist="confirm_date " />
                  </if>
                  <!-- Comportement si le mode TRACE est active --> 
 
@@ -303,7 +311,7 @@
       </if>
 
    </filled>
-  </field>
+  </subdialog>
 
   <field name="resa_objet" expr="'Fill'">
 

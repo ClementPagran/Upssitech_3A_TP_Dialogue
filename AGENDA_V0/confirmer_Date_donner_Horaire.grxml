@@ -13,7 +13,15 @@
 <rule id="confirmDateetHoraire" scope="public">
 	<one-of>
 		<item> Non <tag>out.confirm=0;</tag> </item> 
-		<item> <ruleref uri="#grammaire_horaire.grxml#Horaire" />
+		<item> <ruleref uri="grammaire_horaire.grxml#Horaire" />
+		 		<tag> out.confirm=1;
+				 	  out.heure = rules.Horaire.heure;
+				 	  out.min = rules.Horaire.min;
+					  out.nb_min = rules.Horaire.nb_min;
+					  out.text = rules.Horaire.text;
+				</tag>
+	    </item>
+		<item> <ruleref uri="#filler_debut_phrase" /><ruleref uri="grammaire_horaire.grxml#Horaire" />
 		 		<tag> out.confirm=1;
 				 	  out.heure = rules.Horaire.heure;
 				 	  out.min = rules.Horaire.min;
@@ -23,11 +31,11 @@
 	    </item>
 		<item> Non <ruleref uri="grammaire_dates_v3.grxml#Date" /> 
 			    <tag>   out.confirm=2;
-						out.num_jour = Date.num_jour ;
-	                    out.nb_jour = Date.nb_jour ;
-                        out.num_mois = Date.num_mois ;
-                        out.nb_annee = Date.nb_annee;
-						out.text = Date.text;
+						out.num_jour = rules.Date.num_jour ;
+	                    out.nb_jour = rules.Date.nb_jour ;
+                        out.num_mois = rules.Date.num_mois ;
+                        out.nb_annee = rules.Date.nb_annee;
+						out.text = rules.Date.text;
                 </tag>
 		</item>
 	</one-of>

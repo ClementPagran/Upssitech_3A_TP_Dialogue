@@ -75,7 +75,9 @@
 <rule id="val_spe_apres" scope="public">
 		<one-of>
 			<item> et-quart <tag> out.nb_min = 15; </tag> </item>
+			<item> et quart <tag> out.nb_min = 15; </tag> </item>
 			<item> et-demi <tag> out.nb_min = 30; </tag> </item>
+			<item> et demi <tag> out.nb_min = 30; </tag> </item>
 		</one-of>
 </rule>
 

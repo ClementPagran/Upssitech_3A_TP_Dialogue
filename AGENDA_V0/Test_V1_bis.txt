@@ -1,0 +1,96 @@
+Interpreting VoiceXML document file:/D:/Bureau/Upssitech/3A/Dialogue/Upssitech_3A_TP_Dialogue/AGENDA_V0/gestion_agenda_v1.vxml
+
+Bienvenue sur le service de gestion de votre agenda. Aujourd'hui nous sommes le
+Thu Dec 09 2010 15:30:00 GMT+0100
+1291905000000
+Quel est votre numero d'abonne ?
+KEYB> deux
+Votre numero d'abonne est le
+deux
+Pouvez-vous me le confirmer ?
+KEYB> oui
+Veuillez patienter ... Nous nous connectons a la base abonne.... Bonjour Monsieur Dupont. Vous pouvez maintenant acceder a votre agenda ! 
+Vous allez maintenant pouvoir reserver une salle.
+Pouvez vous me donner la date de reservation ?
+KEYB> lundi deux mars
+Votre date est le
+lundi deux mars
+Pouvez-vous me le confirmer ?
+KEYB> oui
+Pouvez vous me donner l'heure de reservation ?
+KEYB>deux heures
+Vous avez donnez un horaire qui est en dehors des plages d'ouverture. Veuillez rentrer un nouvelle horaire.
+Pouvez vous me donner l'heure de reservation ?
+KEYB> trente heures
+Votre horaire ne correspond pas a une heure valide. Veuillez rentrer un heure valide.
+Pouvez vous me donner l'heure de reservation ?
+KEYB> midi
+Votre heure de reservation est
+midi
+Pouvez-vous me le confirmer ?
+Je n'ai pas entendu. Pouvez-vous repeter ?
+KEYB>oui
+Pouvez vous me donner la duree de reservation ?
+KEYB> quitter
+Vous avez decide de quitter l'application sans finaliser la demande. Merci et a bientot !
+
+
+Bienvenue sur le service de gestion de votre agenda. Aujourd'hui nous sommes le
+Thu Dec 09 2010 15:30:00 GMT+0100
+1291905000000
+Quel est votre numero d'abonne ?
+KEYB> deux
+Votre numero d'abonne est le
+deux
+Pouvez-vous me le confirmer ?
+KEYB> stop
+Vous avez decide de quitter l'application sans finaliser la demande. Merci et a bientot !
+
+
+
+Bienvenue sur le service de gestion de votre agenda. Aujourd'hui nous sommes le
+Thu Dec 09 2010 15:30:00 GMT+0100
+1291905000000
+Quel est votre numero d'abonne ?
+KEYB> deux
+Votre numero d'abonne est le
+deux
+Pouvez-vous me le confirmer ?
+KEYB> oui
+Veuillez patienter ... Nous nous connectons a la base abonne.... Bonjour Monsieur Dupont. Vous pouvez maintenant acceder a votre agenda ! 
+Vous allez maintenant pouvoir reserver une salle.
+Pouvez vous me donner la date de reservation ?
+KEYB> mardi deux octobre
+Votre date est le
+mardi deux octobre
+Pouvez-vous me le confirmer ?
+KEYB> oui
+Pouvez vous me donner l'heure de reservation ?
+KEYB> midi
+Votre heure de reservation est
+midi
+Pouvez-vous me le confirmer ?
+KEYB> oui
+Pouvez vous me donner la duree de reservation ?
+KEYB> trente minutes
+Votre duree est
+trente minutes
+Pouvez-vous me le confirmer ?
+KEYB> oui
+Pouvez vous me donner lieu de reunion ?
+KEYB> batiment U4 salle deux
+Votre lieu est
+Batiment: U4  Salle: deux
+Pouvez-vous me le confirmer ?
+Je n'ai pas entendu. Pouvez-vous repeter ?
+KEYB> oui
+Voulez vous renseigner l'objet de la reunion ?
+KEYB> oui
+Quelle est l'objet de votre reunion ?
+Voici la liste des objets disponible: Information / Revue / Echanges / Resolution de problemes / Prise de decision
+KEYB> Revue
+Votre objet est
+Revue
+Pouvez-vous me le confirmer ?
+KEYB> oui
+Veuillez patienter ... Mise a jour de votre agenda.... La reunion a bien ete ajoute a votre agenda.
