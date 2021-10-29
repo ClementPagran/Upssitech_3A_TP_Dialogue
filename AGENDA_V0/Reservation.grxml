@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar version="1.0" root="reservation" xml:lang="fr">
+
+<meta name="description" content="grammaire pour une reservation"/>
+<meta name="author" content="OptimSys, s.r.o., Czech Republic (http://www.optimsys.cz)"/>
+<meta name="copyright" content="free for any purpose"/>
+
+
+<rule id="reservation" scope="public">
+  <tag>out.resa = new Object;</tag>
+
+  <ruleref uri="#politesse1"/>
+  <ruleref uri="#action"/>
+  <item repeat="1-">
+    <one-of>
+      <item> le
+        <ruleref uri="grammaire_dates_v3.grxml#Date"/>
+        <tag>out.resa.Date = rules.Date</tag>
+      </item>
+      <item> a
+        <ruleref uri="grammaire_horaire.grxml#Horaire"/>
+        <tag>out.resa.Horaire = rules.Horaire</tag>
+      </item>
+      <item>
+        <ruleref uri="grammaire_duree.grxml#Duree"/>
+        <tag>out.resa.Duree = rules.Duree</tag>
+      </item>
+      <item>
+        <item repeat="0-1"> de </item>
+        <ruleref uri="grammaire_lieu.grxml#Lieu"/>
+        <tag>out.resa.Lieu = rules.Lieu</tag>
+      </item>
+      <item> pour 
+        <item repeat="0-1"> le </item>
+        <item repeat="0-1"> le motif </item>
+        <ruleref uri="grammaire_objet.grxml#Objet"/>
+        <tag>out.resa.Objet = rules.Objet</tag>
+      </item>
+    </one-of>
+  </item>
+  <ruleref uri="#politesse2"/>
+</rule>
+
+<rule id="askDate" scope="public">
+  <ruleref uri="#politesse1"/>
+  <ruleref uri="grammaire_dates_v3.grxml#Date"/>
+  <tag> out = rules.drink</tag>
+  <ruleref uri="#politesse2"/>
+</rule>
+
+<rule id="politesse1">
+  <item repeat="0-1"> svp </item>
+  <item repeat="0-1"> Je </item>
+  <item>
+    <one-of>
+      <item> veux </item>
+      <item> voudrais</item>
+      <item> souhaiterais</item>
+      <item> Demande de</item>
+    </one-of>
+  </item>
+</rule>
+
+<rule id="politesse2">
+  <item repeat="0-1">
+    <one-of>
+      <item> Merci </item>
+      <item> svp </item>
+    </one-of>
+  </item>
+</rule>
+
+<rule id="action">
+  <item repeat="0-1"> svp </item>
+  <item repeat="0-1">
+    <one-of>
+      <item> reserver </item>
+      <item> reservation</item>
+    </one-of>
+  </item>
+</rule>
+
+
+</grammar>

@@ -26,6 +26,7 @@
 			<item> Echanges 				<tag> out.obj = 3; out.text = "Echanges"; </tag> </item>
 			<item> Resolution de problemes 	<tag> out.obj = 4; out.text = "Resolution de problemes"; </tag> </item>
 			<item> Prise de decision 		<tag> out.obj = 5; out.text = "Prise de decision"; </tag> </item>
+			<item> PGE						<tag> out.obj = 6; out.text = "PGE"; </tag> </item>
           </one-of>
 </rule>
 
