@@ -42,10 +42,33 @@
 </rule>
 
 <rule id="askDate" scope="public">
-  <ruleref uri="#politesse1"/>
-  <ruleref uri="grammaire_dates_v3.grxml#Date"/>
-  <tag> out = rules.drink</tag>
-  <ruleref uri="#politesse2"/>
+  <item repeat="0-1"> <ruleref uri="#politesse1"/> </item>
+  <item> <ruleref uri="grammaire_dates_v3.grxml#Date"/> <tag> out = rules.Date;</tag> </item>
+  <item repeat="0-1"> <ruleref uri="#politesse2"/> </item>
+</rule>
+
+<rule id="askHoraire" scope="public">
+  <item repeat="0-1"> <ruleref uri="#politesse1"/> </item>
+  <item> <ruleref uri="grammaire_horaire.grxml#Horaire"/> <tag> out = rules.Horaire;</tag> </item>
+  <item repeat="0-1"> <ruleref uri="#politesse2"/> </item>
+</rule>
+
+<rule id="askDuree" scope="public">
+  <item repeat="0-1"> <ruleref uri="#politesse1"/> </item>
+  <item> <ruleref uri="grammaire_duree.grxml#Duree"/> <tag> out = rules.Duree;</tag> </item>
+  <item repeat="0-1"> <ruleref uri="#politesse2"/> </item>
+</rule>
+
+<rule id="askLieu" scope="public">
+  <item repeat="0-1"> <ruleref uri="#politesse1"/> </item>
+  <item> <ruleref uri="grammaire_lieu.grxml#Lieu"/> <tag> out = rules.Lieu;</tag> </item>
+  <item repeat="0-1"> <ruleref uri="#politesse2"/> </item>
+</rule>
+
+<rule id="askObjet" scope="public">
+  <item repeat="0-1"> <ruleref uri="#politesse1"/> </item>
+  <item> <ruleref uri="grammaire_objet.grxml#Objet"/> <tag> out = rules.Objet;</tag> </item>
+  <item repeat="0-1"> <ruleref uri="#politesse2"/> </item>
 </rule>
 
 <rule id="politesse1">

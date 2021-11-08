@@ -13,15 +13,15 @@
   <var name="summarization"/>
 
   <nomatch>
-    <prompt> I didn't understand you. </prompt>
+    <prompt> Je ne vous ai toujours pas compris. </prompt>
     <reprompt/>
   </nomatch>
   <nomatch count="3">
-    <prompt> I didn't understand you again. This is your last chance. </prompt>
+    <prompt> Je ne vous ai toujours pas compris. C'est votre derniere chance. </prompt>
     <reprompt/>
   </nomatch>
   <nomatch count="4">
-    <prompt> Sorry, I didn't understand you again. I am giving up. Bye. </prompt>
+    <prompt> Desole, je ne vous ai toujours pas compris. J'abandonne. Au revoir. </prompt>
     <exit/>
   </nomatch>
 
@@ -29,15 +29,15 @@
     Sorry, no help is available.
   </help>
 
-  <grammar src="reservation.grxml"/>
+  <grammar src="Reservation.grxml"/>
 
   <initial name="mixed">
-    Bienvenue sur le service de reservation de reunion. Veuillez renseigné les différents champs (date, horaire, duree, lieu, objet).
+    Bienvenue sur le service de reservation de reunion. Veuillez renseigner les differents champs (date, horaire, duree, lieu, objet).
     <nomatch>
-      Je ne vous ai pas entendu. Veuillez spécifier: la date, l'horaire, la duree, le lieu et l'objet.
+      Je ne vous ai pas entendu. Veuillez specifier: la date, l'horaire, la duree, le lieu et l'objet.
     </nomatch>
     <nomatch count="2">
-      Désolé, je ne vois ai toujours pas entendu. Je vais vous demander les informations une par une
+      Desole, je ne vous ai toujours pas entendu. Je vais vous demander les informations une par une
       <assign name="mixed" expr="true"/>
       <reprompt/>
     </nomatch>
@@ -52,112 +52,89 @@
 
   <field name="reudate" slot="reservation.Date">
     Quand voulez vous plannifier votre reunion ?
-    <grammar src="reservation.grxml#askdate"/>
+    <grammar src="Reservation.grxml#askDate"/>
     <nomatch>
-      Je ne vous ai pas entendu. Veuillez donner une date valide (Exemple: Lindu deux mars)
+      Je ne vous ai pas entendu. Veuillez donner une date valide (Exemple: Lundi deux mars)
     </nomatch>
     <help>
-      Veuillez donner une date valide (Exemple: Lindu deux mars)
+      Veuillez donner une date valide (Exemple: Lundi deux mars)
     </help>
     <filled>
       <assign name="summarization" expr="summarization + reudate.text + ' '"/>
     </filled>
   </field>
 
-  <field name="reuhoraire" slot="reservation.Horaire">
-    What size of pizzas do you want?
-    <grammar src="pizza.grxml#ordersize"/>
+ <field name="reuhoraire" slot="reservation.Horaire">
+    A quelle horaire voulez vous plannifiez votre reunion ?
+    <grammar src="reservation.grxml#askhoraire"/>
     <nomatch>
-      I didn't understand you. Please say what size of the pizzas you want.
-    </nomatch>
-    <nomatch count="2">
-      I didn't understand you. Please say what size of the pizzas you want.
-      You can choose from small, medium and large.
+      Je ne vous ai pas entendu. Veuillez donner un horaire valide (Exemple: dix heures trente)
     </nomatch>
     <help>
-      Please say what size of pizzas you want. You can choose from small,
-      medium and large.
+      Veuillez donner un horaire valide (Exemple: dix heures trente)
     </help>
     <filled>
-      <assign name="summarization" expr="summarization + pizzasize + ' '"/>
+      <assign name="summarization" expr="summarization + reuhoraire.text + ' '"/>
     </filled>
   </field>
 
-  <filled mode="any" namelist="pizzanumber pizzasize pizzatopping">
-    <if cond="pizzanumber == 1">
-      <assign name="summarization" expr="summarization + 'pizza '"/>
-    <else/>
-      <assign name="summarization" expr="summarization + 'pizzas '"/>
-    </if>
-  </filled>
-
-  <field name="pizzatopping" slot="pizza.topping">
-    What do you want on the top of the pizzas?
-    <grammar src="pizza.grxml#ordertoppings"/>
+  <field name="reuduree" slot="reservation.Duree">
+    Quelle duree pour votre reunion ?
+    <grammar src="reservation.grxml#askduree"/>
     <nomatch>
-      I didn't understand you. Please say what you want on the top of your pizzas.
-    </nomatch>
-    <nomatch count="2">
-      I didn't understand you. Say something like ham and cheese.
+      Je ne vous ai pas entendu. Veuillez donner une duree valide.
     </nomatch>
     <help>
-      Please say what you want on the top of your pizzas. Say something like
-      ham and cheese.
+      Veuillez donner une duree valide.
     </help>
     <filled>
-      <script> <![CDATA[
-        summarization += 'with ';
-        for (var i = 0; i < pizzatopping.length; i++) {
-          summarization += pizzatopping[i];
-          if (i != pizzatopping.length - 1) summarization += ' and ';
-          else summarization += '.';
-        }
-      ]]> </script>
+      <assign name="summarization" expr="summarization + reuduree.text + ' '"/>
     </filled>
   </field>
 
-  <filled mode="any" namelist="pizzanumber pizzasize pizzatopping">
+<field name="reulieu" slot="reservation.Lieu">
+    Ou voulez vous plannifier votre reunion ?
+    <grammar src="reservation.grxml#asklieu"/>
+    <nomatch>
+      Je ne vous ai pas entendu. Veuillez donner un lieu valide (Exemple: Batiment U4 Salle deux)
+    </nomatch>
+    <help>
+      Veuillez donner un lieu valide (Exemple: Batiment U4 Salle deux)
+    </help>
+    <filled>
+      <assign name="summarization" expr="summarization + reulieu.text + ' '"/>
+    </filled>
+  </field>
+
+  <field name="reuobjet" slot="reservation.Objet">
+    Quelle est l'objet de votre reunion ?
+    <grammar src="reservation.grxml#askhoraire"/>
+    <nomatch>
+      Je ne vous ai pas entendu. Veuillez donner un objet parmi la liste suivante: Information / Revue / Echanges / Resolution de problemes / Prise de decision
+    </nomatch>
+    <help>
+      Veuillez donner un objet parmi la liste suivante: Information / Revue / Echanges / Resolution de problemes / Prise de decision
+    </help>
+    <filled>
+      <assign name="summarization" expr="summarization + reuobjet.text + ' '"/>
+    </filled>
+  </field>
+
+  <filled mode="any" namelist="reudate reuhoraire reuduree reulieu reuobjet">
     <prompt>
       <value expr="summarization"/>
     </prompt>
   </filled>
 
-  <field name="drink">
-    What do you want to drink?
-    <grammar src="pizza.grxml#orderdrink"/>
-    <nomatch>
-      I didn't understand you. Please say what you want to drink.
-    </nomatch>
-    <help>
-      Please say what you want to drink.
-    </help>
-    <filled>
-      <if cond="drink == 'none'">
-        <prompt> I understood that you don't want any drink. </prompt>
-      <else/>
-        <prompt> I understood that you will drink <value expr="drink"/>. </prompt>
-      </if>
-    </filled>
-  </field>
 
   <block>
     <script> <![CDATA[
-      summarization = pizzanumber;
+      summarization = reudate.text;
       summarization += ' ';
-      summarization += pizzasize;
-      if (pizzanumber == 1) summarization += ' pizza ';
-      else summarization += ' pizzas ';
-      summarization += 'with ';
-      for (var i = 0; i < pizzatopping.length; i++) {
-        summarization += pizzatopping[i];
-        summarization += ' and ';
-      }
-      if (drink == 'none') summarization += 'nothing';
-      else summarization += drink;
-      summarization += ' to drink.';
+      summarization += reudate.text;
     ]]> </script>
     <prompt>
-      Thank you for your order. You ordered <value expr="summarization"/>
+      Merci pour votre reservation. Votre reservation: <value expr="summarization"/>
     </prompt>
   </block>
 </form>
