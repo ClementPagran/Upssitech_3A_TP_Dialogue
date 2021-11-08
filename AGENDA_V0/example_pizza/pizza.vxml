@@ -46,8 +46,7 @@
       and topping of your pizzas and kind of drink.
     </nomatch>
     <nomatch count="2">
-      Sorry, I still don't understand you. I will ask you for the information
-      one piece at a time.
+      Sorry, I still don't understand you. I will ask you for the information one piece at a time.
       <assign name="mixed" expr="true"/>
       <reprompt/>
     </nomatch>
