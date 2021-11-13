@@ -1,0 +1,86 @@
+Interpreting VoiceXML document file:/D:/Bureau/Upssitech/3A/Dialogue/Upssitech_3A_TP_Dialogue/AGENDA_V0/Reservation.vxml
+
+Bienvenue sur le service de reservation de reunion. Veuillez renseigner les differents champs (date, horaire, duree, lieu, objet).
+KEYB> Je voudrais reserver la salle deux le lundi deux mars a dix heures pour une heure dans la salle deux avec le motif Information
+J'ai bien compris votre demande:  le lundi deux mars  a dix heures  pour une heure  dans la salle deux  avec le motif Information
+Merci pour votre reservation. Details de la reservation: Le lundi deux mars a dix heures pendant une heure dans la salle deux avec pour objet Information
+
+-----------------------------------------------------------------------------------
+
+Bienvenue sur le service de reservation de reunion. Veuillez renseigner les differents champs (date, horaire, duree, lieu, objet).
+KEYB> Demande de reservation la salle deux le lundi deux mars a dix heures pour une heure dans la salle deux avec le motif Information
+J'ai bien compris votre demande:  le lundi deux mars  a dix heures  pour une heure  dans la salle deux  avec le motif Information
+Merci pour votre reservation. Details de la reservation: Le lundi deux mars a dix heures pendant une heure dans la salle deux avec pour objet Information
+
+-----------------------------------------------------------------------------------
+
+Bienvenue sur le service de reservation de reunion. Veuillez renseigner les differents champs (date, horaire, duree, lieu, objet).
+KEYB> Je veux reserver le lundi deux mars a dix heures pour une heure
+J'ai bien compris votre demande:  le lundi deux mars  a dix heures  pour une heure
+Ou voulez vous plannifier votre reunion ?
+KEYB> batiment U4 salle deux
+J'ai bien compris votre demande:  dans le Batiment U4 la salle deux
+Quelle est l'objet de votre reunion ? (Information / Revue / Echanges / Resolution de problemes / Prise de decision)
+KEYB> revue
+J'ai bien compris votre demande:  avec le motif Revue
+Merci pour votre reservation. Details de la reservation: Le lundi deux mars a dix heures pendant une heure dans le Batiment U4 la salle deux avec pour objet Revue
+
+-----------------------------------------------------------------------------------
+
+Bienvenue sur le service de reservation de reunion. Veuillez renseigner les differents champs (date, horaire, duree, lieu, objet).
+KEYB> Demande de reservation dans le batiment U3 la salle dix pour trois heures
+J'ai bien compris votre demande:  pour trois heures  dans le Batiment U3 la salle dix
+Quand voulez vous plannifier votre reunion ?
+KEYB> lundi deux mars
+J'ai bien compris votre demande:  le lundi deux mars
+A quelle horaire voulez vous plannifiez votre reunion ?
+KEYB> midi
+J'ai bien compris votre demande:  a midi
+Quelle est l'objet de votre reunion ? (Information / Revue / Echanges / Resolution de problemes / Prise de decision)
+KEYB> Revue
+J'ai bien compris votre demande:  avec le motif Revue
+Merci pour votre reservation. Details de la reservation: Le lundi deux mars a midi pendant trois heures dans le Batiment U3 la salle dix avec pour objet Revue
+
+-----------------------------------------------------------------------------------
+
+Bienvenue sur le service de reservation de reunion. Veuillez renseigner les differents champs (date, horaire, duree, lieu, objet).
+KEYB>
+Je ne vous ai pas entendu. Veuillez specifier: la date, l'horaire, la duree, le lieu et l'objet.
+KEYB>
+Desole, je ne vous ai toujours pas entendu. Je vais vous demander les informations une par une
+Quand voulez vous plannifier votre reunion ?
+KEYB> lundi deux mars
+J'ai bien compris votre demande:  le lundi deux mars
+A quelle horaire voulez vous plannifiez votre reunion ?
+KEYB> midi
+J'ai bien compris votre demande:  a midi
+Quelle duree pour votre reunion ?
+KEYB> une heures
+Je ne vous ai pas entendu. Veuillez donner une duree valide.
+KEYB> une heure
+J'ai bien compris votre demande:  pour une heure
+Ou voulez vous plannifier votre reunion ?
+KEYB> salle deux
+J'ai bien compris votre demande:  dans la salle deux
+Quelle est l'objet de votre reunion ? (Information / Revue / Echanges / Resolution de problemes / Prise de decision)
+KEYB> Information
+J'ai bien compris votre demande:  avec le motif Information
+Merci pour votre reservation. Details de la reservation: Le lundi deux mars a midi pendant une heure dans la salle deux avec pour objet Information
+
+-----------------------------------------------------------------------------------
+
+Bienvenue sur le service de reservation de reunion. Veuillez renseigner les differents champs (date, horaire, duree, lieu, objet).
+KEYB>
+Je ne vous ai pas entendu. Veuillez specifier: la date, l'horaire, la duree, le lieu et l'objet.
+KEYB>
+Desole, je ne vous ai toujours pas entendu. Je vais vous demander les informations une par une
+Quand voulez vous plannifier votre reunion ?
+KEYB>
+Je ne vous ai pas entendu. Veuillez donner une date valide (Exemple: Lundi deux mars)
+KEYB>
+Je ne vous ai pas entendu. Veuillez donner une date valide (Exemple: Lundi deux mars)
+KEYB>
+Je ne vous ai toujours pas compris. C'est votre derniere chance.
+Quand voulez vous plannifier votre reunion ?
+KEYB>
+Desole, je ne vous ai toujours pas compris. J'abandonne. Au revoir.
