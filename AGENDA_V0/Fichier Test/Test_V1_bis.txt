@@ -34,6 +34,7 @@ Pouvez vous me donner la duree de reservation ?
 KEYB> quitter
 Vous avez decide de quitter l'application sans finaliser la demande. Merci et a bientot !
 
+-----------------------------------------------------------------------------------
 
 Bienvenue sur le service de gestion de votre agenda. Aujourd'hui nous sommes le
 Thu Dec 09 2010 15:30:00 GMT+0100
@@ -46,7 +47,7 @@ Pouvez-vous me le confirmer ?
 KEYB> stop
 Vous avez decide de quitter l'application sans finaliser la demande. Merci et a bientot !
 
-
+-----------------------------------------------------------------------------------
 
 Bienvenue sur le service de gestion de votre agenda. Aujourd'hui nous sommes le
 Thu Dec 09 2010 15:30:00 GMT+0100

@@ -1,4 +1,4 @@
-############################################### Test V1 En cours ###############################################
+############################################### Test V1 Avec Prof ###############################################
 
 Interpreting VoiceXML document file:/D:/Bureau/Upssitech/3A/Dialogue/Upssitech_3A_TP_Dialogue/AGENDA_V0/gestion_agenda_v1.vxml
 
@@ -93,12 +93,7 @@ Pouvez-vous me le confirmer ?
 KEYB> oui
 Veuillez patienter ... Mise a jour de votre agenda.... La reunion a bien ete ajoute a votre agenda.
 
-D:\Bureau\Upssitech\3A\Dialogue\Upssitech_3A_TP_Dialogue\Optimtalk>ot_vxml_interpreter.exe ..\AGENDA_V0\gestion_agenda_v1.vxml
-
-OptimTalk VoiceXML interpreter (version 1.10)
-==============================
-Copyright (c) 2004-2010 OptimSys, s.r.o., Czech Republic
-  http://www.optimsys.cz
+-----------------------------------------------------------------------------------
 
 Interpreting VoiceXML document file:/D:/Bureau/Upssitech/3A/Dialogue/Upssitech_3A_TP_Dialogue/AGENDA_V0/gestion_agenda_v1.vxml
 
@@ -113,7 +108,7 @@ Pouvez-vous me le confirmer ?
 KEYB> quitter
 Je ne vous ai pas compris. Pouvez-vous repondre par oui ou par non
 
-
+-----------------------------------------------------------------------------------
 ############################################### Test V1 Apres Modif ###############################################
 
 Interpreting VoiceXML document file:/D:/Bureau/Upssitech/3A/Dialogue/Upssitech_3A_TP_Dialogue/AGENDA_V0/gestion_agenda_v1.vxml
@@ -152,6 +147,7 @@ Pouvez vous me donner la duree de reservation ?
 KEYB> quitter
 Vous avez decide de quitter l'application sans finaliser la demande. Merci et a bientot !
 
+-----------------------------------------------------------------------------------
 
 Bienvenue sur le service de gestion de votre agenda. Aujourd'hui nous sommes le
 Thu Dec 09 2010 15:30:00 GMT+0100
@@ -164,7 +160,7 @@ Pouvez-vous me le confirmer ?
 KEYB> stop
 Vous avez decide de quitter l'application sans finaliser la demande. Merci et a bientot !
 
-
+-----------------------------------------------------------------------------------
 
 Bienvenue sur le service de gestion de votre agenda. Aujourd'hui nous sommes le
 Thu Dec 09 2010 15:30:00 GMT+0100

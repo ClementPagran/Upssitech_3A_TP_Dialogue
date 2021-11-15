@@ -35,7 +35,8 @@
 <var name="reponse" />
 <var name="message_confirm" />
 <var name="demande_obj" />
-<var name="first==True" />
+<var name="first" expr="'True'" />
+
 
 <!-- declaration des variables Javascript -->
 <script>

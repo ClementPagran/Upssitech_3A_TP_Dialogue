@@ -1,0 +1,14 @@
+Created from template: |append [ot_log-ERR-%y-%m-%d_%H_%M_%s.log] 
+Number of records: unlimited
+Lifetime: unlimited
+Log format:
+date time severity {session id} <category> [source]
+label: message
+===================================================
+
+2021-Nov-14 23:49:09.932 ERR  {vxmlDialog_0} <System message> [VoiceXML interpreter]
+An unhandled error event 'error.badfetch' occurred (It will be processed by a default platform error handler). The following message was associated with the event: document 'file:/D:/Bureau/Upssitech/3A/Dialogue/Upssitech_3A_TP_Dialogue/AGENDA_V0_Petit/gestion_agenda_v1_bis.vxml', line 141; Cannot load grammar 'file:/D:/Bureau/Upssitech/3A/Dialogue/Upssitech_3A_TP_Dialogue/AGENDA_V0_Petit/confirmer_Date_donner_Horaire.grxml' since an error occurred in call to Grammar rule manager. Grammar rule manager reports: Referenced unknown rule 'file:/D:/Bureau/Upssitech/3A/Dialogue/Upssitech_3A_TP_Dialogue/AGENDA_V0_Petit/grammaire_nombre_v3.grxml#nombre'.
+
+2021-Nov-14 23:49:09.936 ERR  {vxmlDialog_0} <user's application> [VoiceXML interpreter]
+Unhandled error event 'error.badfetch' occurred. Associated message: document 'file:/D:/Bureau/Upssitech/3A/Dialogue/Upssitech_3A_TP_Dialogue/AGENDA_V0_Petit/gestion_agenda_v1_bis.vxml', line 141; Cannot load grammar 'file:/D:/Bureau/Upssitech/3A/Dialogue/Upssitech_3A_TP_Dialogue/AGENDA_V0_Petit/confirmer_Date_donner_Horaire.grxml' since an error occurred in call to Grammar rule manager. Grammar rule manager reports: Referenced unknown rule 'file:/D:/Bureau/Upssitech/3A/Dialogue/Upssitech_3A_TP_Dialogue/AGENDA_V0_Petit/grammaire_nombre_v3.grxml#nombre'.
+
